@@ -21,7 +21,7 @@ jobs:
             - name: Psalm
               uses: docker://jakzal/phpqa:php7.4-alpine
               with:
-                args: psalm --monochrome --no-progress --output-format=text --update-baseline
+                args: psalm --monochrome --no-progress --output-format=text --update-baseline || exit 0
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v3
               with:
