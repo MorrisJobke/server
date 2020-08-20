@@ -498,7 +498,6 @@ class Encryption extends Wrapper {
 			if ($numberOfChunks === $position) {
 				$position .= 'end';
 			}
-			$this->cache = $this->encryptionModule->decrypt($data, $position);
 		}
 	}
 
