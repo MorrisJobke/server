@@ -28,7 +28,8 @@ jobs:
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v3
               with:
-                token: ${{ secrets.PAT }}
+                token: ${{ secrets.MACHINE_USER_PAT }}
+                push-to-fork: nextcloud-pr-bot/server
                 commit-message: Update psalm baseline
                 committer: GitHub <noreply@github.com>
                 author: Nextcloud-Bot <nextcloud-bot@users.noreply.github.com>
