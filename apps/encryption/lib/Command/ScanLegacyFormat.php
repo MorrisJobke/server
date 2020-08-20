@@ -76,28 +76,7 @@ class ScanLegacyFormat extends Command {
 	}
 
 	protected function execute(InputInterface $input, OutputInterface $output): int {
-		$result = true;
-
-		$output->writeln('Scanning all files for legacy encryption');
-
-		foreach ($this->userManager->getBackends() as $backend) {
-			$limit = 500;
-			$offset = 0;
-			do {
-				$users = $backend->getUsers('', $limit, $offset);
-				foreach ($users as $user) {
-					$output->writeln('Scanning all files for ' . $user);
-					$this->setupUserFS($user);
-					$result &= $this->scanFolder($output, '/' . $user);
-				}
-				$offset += $limit;
-			} while (count($users) >= $limit);
-		}
-
-		if ($result) {
-			$output->writeln('All scanned files are propperly encrypted. You can disable the legacy compatibility mode.');
-			return 0;
-		}
+		
 
 		return 1;
 	}
